@@ -1,8 +1,3 @@
--- =====================================================================
--- SI-BIKA : skema Supabase (PostgreSQL). Jalankan di SQL Editor Supabase.
--- Semua tabel TERTUTUP untuk anon/authenticated; aplikasi hanya memanggil
--- fungsi api_* (SECURITY DEFINER) yang memeriksa peran. Tidak ada service-role key di aplikasi.
--- =====================================================================
 create extension if not exists pgcrypto;
 
 create type peran as enum ('operator','agen','logistik','kepala');

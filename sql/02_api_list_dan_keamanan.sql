@@ -1,4 +1,3 @@
--- View internal (tidak dapat diakses langsung oleh aplikasi)
 create view v_misi as
 select m.id, l.nomor, k.nama klien, pr.nama properti, pr.alamat, a.tier, m.status::text status, m.agen_id, ag.nama agen,
   m.estimasi_awal, m.uang_muka, m.ditolak, m.alasan_tolak, m.risiko, m.dibuat_at, m.status_at, l.entitas_kelas kelas, kt.nama dugaan_entitas, l.kepanikan, l.deskripsi,
@@ -114,7 +113,6 @@ begin
   return res;
 end $$;
 
--- ---------------------------------------------------------------- keamanan: tutup semua akses langsung
 do $$ declare t record; begin
   for t in select tablename from pg_tables where schemaname='public' loop execute format('alter table %I enable row level security', t.tablename); end loop;
 end $$;

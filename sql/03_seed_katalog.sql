@@ -1,4 +1,3 @@
--- Konfigurasi awal (nilai default; ubah lewat menu Master Kepala Biro)
 insert into konfigurasi(kunci,nilai,ket) values
  ('uang_muka_persen',50,'Uang muka (% dari estimasi awal)'),
  ('biaya_analisis',150000,'Biaya analisis bahaya (Rp)'),
@@ -64,9 +63,9 @@ select n,'perlengkapan','unit',30000,30000,25,5 from unnest(array[
  'Getah Kemenyan Olibanum','Minyak Santo Benediktus','Benang Merah Segel Yerikho','Lilin Novena Putih','Air Suci Basilika Santo Petrus','Kelopak Mawar Santa Theresia',
  'Perkamen Doa Segel Vellum','Garam Laut Mati Konsekrasi','Air Zamzam Mekah','Serbuk Daun Bidara Sidr','Kayu Gaharu Oud','Minyak Kasturi Kijang Murni','Buhur Kemenyan Arab',
  'Air Hujan Malam Lailatul Qadar','Minyak Zaitun Bukit Tursina','Garam Bukit Ruqyah','Tanah Suci Lembah Bakka']) n;
--- Pemetaan syarat K3 (Kepala Biro dapat mengubah kolom kode_k3 di menu Master > item)
+
 update item set kode_k3='GARAM' where nama='Garam Eksorsisme Rituale Romanum';
 update item set kode_k3='KEMENYAN' where nama='Dupa Kemenyan Frankincense';
 update item set kode_k3='SEGEL_REHAB', aturan='Penjaga segel sel/rehabilitasi' where nama='Benang Merah Segel Yerikho';
--- Stok awal tercatat sebagai transaksi
+
 insert into stok_transaksi(item_id,jenis,jumlah,sebelum,sesudah,alasan) select id,'masuk',stok_tersedia,0,stok_tersedia,'Stok awal' from item;
